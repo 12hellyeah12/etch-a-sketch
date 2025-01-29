@@ -21,8 +21,29 @@
 */
 
 const frame = document.getElementById("frame");
-const promptUserBtn = document.getElementById("prompt-user");
+const promptUserBtn = document.getElementById("prompt-user-btn");
+const resetBtn = document.getElementById("reset-btn");
+let pixels;
 
-for(let i = 0; i < (16 * 16); i++){
-    frame.innerHTML += `<div class="pixels" onmouseover="style.backgroundColor='black'"></div>`;
+//Create Pixel Grid 
+const createPixelGrid = () => {
+    for(let i = 0; i < (16 * 16); i++){
+        const pixel = document.createElement("div");
+        frame.appendChild(pixel);
+        pixel.classList = "pixels";
+    };
+
+    pixels = document.querySelectorAll(".pixels");
+    pixels.forEach(pixel => {
+        pixel.setAttribute("onmouseover", "style.backgroundColor='black'");
+    });    
 }
+
+const resetSketch = () => {
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = "transparent";
+        });
+}
+
+resetBtn.addEventListener("click", resetSketch);
+promptUserBtn.addEventListener("click", createPixelGrid);
