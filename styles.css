@@ -6,6 +6,10 @@
 7. Set its background to lightgrey
 */
 
+:root{
+    --grid-size: 16;
+}
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -32,7 +36,7 @@ body{
 }
 
 .pixels{
-    height: calc(400px / 16);
-    width: calc(400px / 16);
+    height: calc(400px / var(--grid-size));
+    width: calc(400px / var(--grid-size));
     border: 1px solid blue; 
 }
