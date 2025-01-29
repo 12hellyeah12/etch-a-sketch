@@ -23,10 +23,12 @@
 const frame = document.getElementById("frame");
 const promptUserBtn = document.getElementById("prompt-user-btn");
 const resetBtn = document.getElementById("reset-btn");
+const randColorBtn = document.getElementById("rand-color-btn");
 let pixels;
 const root = document.documentElement;
 
-const promptUserForGridSize = () => size = window.prompt("Chose a grid size between 1 and 100", "16");
+const promptUserForGridSize = () => 
+    size = window.prompt("Chose a grid size between 1 and 100", "16");
 
 const createPixelGrid = (size) => {
     root.style.setProperty("--grid-size", size);
@@ -43,6 +45,16 @@ const createPixelGrid = (size) => {
     });    
 }
 
+const createRandPixelColor = () => {
+    pixels.forEach(pixel => {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+        pixel.setAttribute("onmouseover", 
+            `style.backgroundColor='rgb(${red}, ${green}, ${blue})'`);
+    });
+}
+
 const resetSketch = () => {
     pixels.forEach(pixel => {
         pixel.style.backgroundColor = "transparent";
@@ -56,8 +68,13 @@ const resetGrid = () => {
 }
 
 resetBtn.addEventListener("click", resetSketch);
+
 promptUserBtn.addEventListener("click", () => {
     resetGrid();
     promptUserForGridSize();
     createPixelGrid(size);
+});
+
+randColorBtn.addEventListener("click", () => {
+    createRandPixelColor();
 });
