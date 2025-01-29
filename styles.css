@@ -1,11 +1,3 @@
-/* PSEUDO CODE
-
-4. Set Universal Selector to border-box and remove margins and padding
-5. Place the container div in the middle of the page
-6. Apply Flexbox to the container div
-7. Set its background to lightgrey
-*/
-
 :root{
     --grid-size: 16;
 }
