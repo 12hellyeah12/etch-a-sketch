@@ -38,5 +38,4 @@ body{
 .pixels{
     height: calc(400px / var(--grid-size));
     width: calc(400px / var(--grid-size));
-    border: 1px solid blue; 
 }

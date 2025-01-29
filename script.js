@@ -26,6 +26,7 @@ const resetBtn = document.getElementById("reset-btn");
 const randColorBtn = document.getElementById("rand-color-btn");
 let pixels;
 const root = document.documentElement;
+let isGridAdded = false;
 
 const promptUserForGridSize = () => 
     size = window.prompt("Chose a grid size between 1 and 100", "16");
@@ -42,7 +43,9 @@ const createPixelGrid = (size) => {
     pixels = document.querySelectorAll(".pixels");
     pixels.forEach(pixel => {
         pixel.setAttribute("onmouseover", "style.backgroundColor='black'");
-    });    
+    });   
+    
+    isGridAdded = true;
 }
 
 const createRandPixelColor = () => {
@@ -76,5 +79,9 @@ promptUserBtn.addEventListener("click", () => {
 });
 
 randColorBtn.addEventListener("click", () => {
+    if(!isGridAdded){
+        alert("First create a grid with the 'Create Grid' button!");
+    } else {
     createRandPixelColor();
+    }
 });
