@@ -24,10 +24,14 @@ const frame = document.getElementById("frame");
 const promptUserBtn = document.getElementById("prompt-user-btn");
 const resetBtn = document.getElementById("reset-btn");
 let pixels;
+const root = document.documentElement;
 
-//Create Pixel Grid 
-const createPixelGrid = () => {
-    for(let i = 0; i < (16 * 16); i++){
+const promptUserForGridSize = () => size = window.prompt("Chose a grid size between 1 and 100", "16");
+
+const createPixelGrid = (size) => {
+    root.style.setProperty("--grid-size", size);
+
+    for(let i = 0; i < (size * size); i++){
         const pixel = document.createElement("div");
         frame.appendChild(pixel);
         pixel.classList = "pixels";
@@ -45,5 +49,15 @@ const resetSketch = () => {
         });
 }
 
+const resetGrid = () => {
+    while(frame.hasChildNodes()){
+        frame.removeChild(frame.firstChild);
+    }
+}
+
 resetBtn.addEventListener("click", resetSketch);
-promptUserBtn.addEventListener("click", createPixelGrid);
+promptUserBtn.addEventListener("click", () => {
+    resetGrid();
+    promptUserForGridSize();
+    createPixelGrid(size);
+});
