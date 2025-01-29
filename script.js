@@ -24,5 +24,5 @@ const frame = document.getElementById("frame");
 const promptUserBtn = document.getElementById("prompt-user");
 
 for(let i = 0; i < (16 * 16); i++){
-    frame.innerHTML += `<div class="pixels"></div>`;
+    frame.innerHTML += `<div class="pixels" onmouseover="style.backgroundColor='black'"></div>`;
 }
